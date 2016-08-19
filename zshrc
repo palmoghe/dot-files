@@ -1,3 +1,12 @@
+# zshrc
+#
+# Author: Pallavi Moghe
+# Email: palmoghe@gmail.com
+# Last modified: Tue Dec 30 22:36:23 UTC 2014
+#
+# zshrc configuration
+
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/pmoghe/.oh-my-zsh
 

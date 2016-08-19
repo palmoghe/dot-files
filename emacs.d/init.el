@@ -1,5 +1,10 @@
-;; Emacs configuration top level script
-;; Load path etc.
+;; init.el
+;;
+;; Author: Pallavi Moghe
+;; Email: palmoghe@gmail.com
+;; Last modified: Tue Dec 30 22:36:23 UTC 2014
+;;
+;; Emacs configuration top level script - loads path and provides features
 
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
