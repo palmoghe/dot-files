@@ -106,4 +106,5 @@ if [[ ! $TERM =~ screen ]]; then
     exec tmux
 fi
 
-alias emacs='/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs'
+#alias emacs='/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs'
+export CLASSPATH=$CLASSPATH:/usr/share/antlr3/lib/antlr-3.5-complete-no-st3.jar
