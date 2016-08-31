@@ -37,4 +37,5 @@
 (setq inhibit-splash-screen t)
 
 ;; Enable smart tabs mode for languages
+(smart-tabs-add-language-support python python-mode-hook ())
 (smart-tabs-insinuate 'c 'javascript 'python 'java 'c++)
