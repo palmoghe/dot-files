@@ -35,3 +35,6 @@
 
 ;; Prevent silly initial splash screen
 (setq inhibit-splash-screen t)
+
+;; Enable smart tabs mode for languages
+(smart-tabs-insinuate 'c 'javascript 'python 'java 'c++)
