@@ -36,6 +36,12 @@
 ;; Prevent silly initial splash screen
 (setq inhibit-splash-screen t)
 
+;; Indentation related stuff
+
+(autoload 'nlog-mode "nlog-mode" "Major mode for editing NLog programs." t)
+(add-to-list 'auto-mode-alist '("\\.n$" . nlog-mode))
+
+
 ;; Enable smart tabs mode for languages
 (smart-tabs-add-language-support python python-mode-hook ())
 (smart-tabs-insinuate 'c 'javascript 'python 'java 'c++)
