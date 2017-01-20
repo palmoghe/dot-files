@@ -1,0 +1,6 @@
+/nsx/controller/lcp/ovs/mh/src/cpp/nsx-agent/wiring.n
+/nsx/controller/lcp/ovs/mh/src/cpp/nsx-agent/#wiring.n#
+/nsx/controller/lcp/ovs/mh/src/cpp/nsx-agent/vif-ingress-impl.n
+/nsx/controller/lcp/ovs/mh/src/cpp/nsx-agent/#vif-ingress-impl.n#
+/nsx/controller/lcp/ovs/mh/src/cpp/nsx-agent/port-security-impl.n
+/nsx/controller/lcp/ovs/mh/src/cpp/nsx-agent/#port-security-impl.n#

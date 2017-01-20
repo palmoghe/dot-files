@@ -92,6 +92,21 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Safely create a new tmux session witout nesting
+function tm-new
+{
+	OLD_TMUX=${TMUX}
+	if [ "$1" = "" ]; then
+	   name=`basename $(pwd) | cut -d "." -f1`
+	   else
+		name=$1
+		fi
+		TMUX=
+		tmux new-session -d -s ${name}
+		tmux switch-client -t ${name}
+		TMUX=${OLD_TMUX}
+}
+
 
 # For near unlimited history
 HISTFILE=~/.zsh_history

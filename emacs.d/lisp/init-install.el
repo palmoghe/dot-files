@@ -15,6 +15,7 @@
 		autopair
 		gotham-theme
 		markdown-mode
+		sunshine
 		)
   )
 
