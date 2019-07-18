@@ -9,7 +9,7 @@
 ;;;
 
 (setq user-full-name "Pallavi Moghe")
-(setq user-mail-address "palmoghe@gmail.com")
+(setq user-mail-address "xxxxxxxx@gmail.com")
 
 
 ;; Scroll one line at a time
