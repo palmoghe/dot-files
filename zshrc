@@ -44,7 +44,7 @@ ZSH_THEME="pygmalion"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -61,8 +61,9 @@ ZSH_THEME="pygmalion"
 plugins=(git)
 
 # User configuration
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$JAVA_HOME/bin:/Users/pallavi_moghe/.rbenv/shims:$PATH"
 
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -107,11 +108,47 @@ function tm-new
 		TMUX=${OLD_TMUX}
 }
 
+# Used by parse_git_dirty in oh-my-zsh/lib/git.zsh
+# Override it. Speeds up zsh on large git repos
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
 
 # For near unlimited history
 HISTFILE=~/.zsh_history
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
+
+
+#alias emacs='/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs'
+export CLASSPATH=$CLASSPATH:/usr/share/antlr3/lib/antlr-3.5-complete-no-st3.jar
+
+# AIRLAB-DO-NOT-MODIFY section:ShellWrapper {{{
+# Airlab will only make edits inside these delimiters.
+
+# Source Airlab's shell integration, if it exists.
+if [ -e ~/.airlab/shellhelper.sh ]; then
+  source ~/.airlab/shellhelper.sh
+fi
+# AIRLAB-DO-NOT-MODIFY section:ShellWrapper }}}
+
+## @Airbnb kube-gen
+export LOCAL_BUILDS=y; export KUBEGEN=kube-gen
+
+#Airbnb Ruby setup
+eval "$(rbenv init -)"
+
+#Airbnb hub for PRs
+eval "$(hub alias -s)"
+
+#Push PR
+function gpra() {
+  git pull-request -b airbnb:${1:-master} -h airbnb:$(git rev-parse --abbrev-ref HEAD)
+}
+
+#gitsafe to prevent force push into master
+#alias git=gitsafe
 
 
 # Start tmux session 
@@ -121,5 +158,9 @@ if [[ ! $TERM =~ screen ]]; then
     exec tmux
 fi
 
-#alias emacs='/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs'
-export CLASSPATH=$CLASSPATH:/usr/share/antlr3/lib/antlr-3.5-complete-no-st3.jar
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+alias python='python3'
+
+source <(yak completion zsh)
